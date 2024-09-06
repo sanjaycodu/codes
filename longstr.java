@@ -24,9 +24,7 @@ public class longstr{
                 list.remove(Character.valueOf(a.charAt(start)));
                 start++;
                 System.out.println(a.charAt(start));
-              //  list.add(a.charAt(end)+"");
-              //  end++;
-            }
+                          }
             
             
         }
