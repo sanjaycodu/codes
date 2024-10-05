@@ -3,37 +3,39 @@ import java.util.Arrays;
 public class MergeSort {
     public static void main(String[] args) {
         int[] arr = {5, 3, 4, 1, 2};
-        arr = mSort(arr);
+         mSort(arr,0,arr.length);
         System.out.println(Arrays.toString(arr));
     }
 
-    static int[] mSort(int[] arr) {
-        if (arr.length == 1)
-            return arr;
-        int mid = arr.length / 2;
-        int[] left = mSort(Arrays.copyOfRange(arr, 0, mid));
-        int[] right = mSort(Arrays.copyOfRange(arr, mid, arr.length));
-        return merge(left, right);
+    static void mSort(int[] arr,int start,int end) {
+        if (end-start == 1)
+            return;
+        int mid = (start+end) / 2;
+          mSort(arr, start, mid);
+          mSort(arr, mid, end);
+         merge(arr, start,mid,end);
     }
 
-    static int[] merge(int[] first, int[] second) {
-        int[] joined = new int[first.length + second.length];
-        int i = 0;
-        int j = 0;
+    static void merge( int[] arr,int s,int m,int e) {
+        int[] joined = new int[e-s];
+        int i = s;
+        int j = m;
         int k = 0;
-        while (i < first.length && j < second.length) {
-            if (first[i] < second[j]) {
-                joined[k++] = first[i++];
-            } else if (first[i] > second[j]) {
-                joined[k++] = second[j++];
+        while (i < m && j < e) {
+            if (arr[i] < arr[j]) {
+                joined[k++] = arr[i++];
+            } else{
+                joined[k++] = arr[j++];
             }
         }
-        while (i < first.length) {
-            joined[k++] = first[i++];
+        while (i < m) {
+            joined[k++] = arr[i++];
         }
-        while (j < second.length) {
-            joined[k++] = second[j++];
+        while (j < e) {
+            joined[k++] = arr[j++];
         }
-        return joined;
+        for (int l = 0; l < joined.length; l++) {
+            arr[s+l]=joined[l];
+        }
     }
 }
