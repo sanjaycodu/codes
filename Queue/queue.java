@@ -11,7 +11,7 @@ public class queue {
      class queueDemo{
         static final int MAX_SIZE=20;
         int[] arr=new int[MAX_SIZE];
-        int fornt=0;
+        int front=0;
         int rear=-1;
         void enqeue(int val){
             if(rear==MAX_SIZE-1)
@@ -32,7 +32,7 @@ public class queue {
         }
         void display() {
             System.out.println("-----------Qeue has---------- ");
-            for (int i = fornt; i <=rear; i++) {
+            for (int i = front; i <=rear; i++) {
                 System.out.println(arr[i]+" ");
             }
             System.out.println("");
